@@ -33,7 +33,7 @@ export function Header() {
                             <Link
                                 href={item.href}
                                 className={cn(
-                                    "relative px-4 py-2 text-sm font-medium text-neutral-400 transition-colors hover:text-white",
+                                    "relative px-3 py-2 text-sm font-medium text-neutral-400 transition-colors hover:text-white",
                                 )}
                             >
                                 {item.name}
