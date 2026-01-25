@@ -3,37 +3,42 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import Magnetic from "@/components/ui/magnetic"
+import { Download } from "lucide-react"
+import Image from "next/image"
 
 const navItems = [
+    { name: "Home", href: "/" },
     { name: "Projects", href: "#projects" },
-    { name: "Extras", href: "#extras" },
-    { name: "Media", href: "#media" },
-    { name: "Resume", href: "#resume" },
-    { name: "Contact Me", href: "#contact" },
+    { name: "Experience", href: "#experience" },
+    { name: "Contact", href: "#contact" },
 ]
 
 export function Header() {
     return (
         <header className="fixed top-0 z-50 w-full px-6 py-4 pointer-events-none">
             <div className="mx-auto max-w-5xl flex items-center justify-between p-2 pl-4 pr-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg pointer-events-auto">
+                {/* ... logo ... */}
                 <Magnetic>
                     <Link href="/" className="group flex items-center gap-2 px-2">
                         <div className="relative h-8 w-8 overflow-hidden rounded-full bg-neutral-200">
-                            {/* Placeholder for logo */}
-                            <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-black">
-                                ZM
-                            </div>
+                            <Image
+                                src="/logo.jpg"
+                                alt="Logo"
+                                fill
+                                className="object-cover"
+                            />
                         </div>
                     </Link>
                 </Magnetic>
 
+                {/* ... nav links ... */}
                 <nav className="hidden md:flex items-center gap-1">
                     {navItems.map((item) => (
                         <Magnetic key={item.name}>
                             <Link
                                 href={item.href}
                                 className={cn(
-                                    "relative px-3 py-2 text-sm font-medium text-neutral-400 transition-colors hover:text-white",
+                                    "relative px-3 py-2 text-sm font-medium text-neutral-400 transition-colors hover:text-white font-sans",
                                 )}
                             >
                                 {item.name}
@@ -42,14 +47,15 @@ export function Header() {
                     ))}
                 </nav>
 
+                {/* ... mobile menu ... */}
                 <div className="flex md:hidden">
-                    {/* Mobile Menu Placeholder */}
-                    <span className="text-white text-sm">Menu</span>
+                    <span className="text-white text-sm font-sans">Menu</span>
                 </div>
 
                 <Magnetic>
-                    <Link href="#contact" className="ml-2 hidden md:block px-5 py-2 rounded-full bg-white text-black font-medium text-sm hover:bg-neutral-200 transition-colors">
-                        Let&apos;s Talk
+                    <Link href="#resume" className="ml-2 hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black font-medium text-sm hover:bg-neutral-200 transition-colors font-sans">
+                        <span>RESUME</span>
+                        <Download className="w-4 h-4" />
                     </Link>
                 </Magnetic>
             </div>
