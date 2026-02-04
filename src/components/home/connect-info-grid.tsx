@@ -2,10 +2,8 @@
 
 import React from 'react'
 import { MapPin, Download, Github, Linkedin, Mail, Twitter } from 'lucide-react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Tilt from 'react-parallax-tilt'
-import { cn } from '@/lib/utils'
 
 const techArsenal = ['Node.js', 'TypeScript', 'Tailwind', 'Python', 'AWS', 'Docker', 'React Native', 'Firebase']
 
