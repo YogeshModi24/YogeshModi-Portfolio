@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Info } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 const stats = [
