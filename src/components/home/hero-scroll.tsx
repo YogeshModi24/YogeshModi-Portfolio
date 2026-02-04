@@ -7,14 +7,14 @@ import { ArrowRight } from "lucide-react";
 
 export function HeroScroll() {
     return (
-        <div className="flex flex-col overflow-hidden bg-background">
+        <div id="home" className="flex flex-col overflow-hidden bg-background">
             <ContainerScroll
                 titleComponent={
                     <>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-6">
                             Hey, I&apos;m <span className="text-neutral-400">Yogesh</span>. <br />
-                            <span className="text-xl md:text-3xl font-semibold text-neutral-500 mt-4 block">
-                                Lead Frontend Engineer & UI/UX Designer
+                            <span className="text-lg md:text-2xl font-semibold text-neutral-500 mt-4 block leading-relaxed max-w-4xl mx-auto">
+                                Lead Frontend Engineer & UI/UX Designer specialized in building scalable, high-performance web architectures with a focus on user-centric design.
                             </span>
                         </h1>
                         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mb-10">

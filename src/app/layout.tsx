@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { DevEasterEgg } from "@/components/dev-easter-egg";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,6 +41,7 @@ export default function RootLayout({
         >
           <SmoothScroll />
           <Header />
+          <DevEasterEgg />
           {children}
           <Footer />
         </ThemeProvider>
