@@ -5,7 +5,6 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import Magnetic from "@/components/ui/magnetic"
 import { Download } from "lucide-react"
-import Image from "next/image"
 
 const navItems = [
     { name: "Home", href: "/#home" },
@@ -39,16 +38,13 @@ export function Header() {
     return (
         <header className="fixed top-0 z-50 w-full px-6 py-4 pointer-events-none">
             <div className="mx-auto max-w-5xl flex items-center justify-between p-2 pl-4 pr-2 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg pointer-events-auto">
-                {/* ... logo ... */}
+                {/* Logo */}
                 <Magnetic>
-                    <Link href="/" className="group flex items-center gap-2 px-2">
-                        <div className="relative h-8 w-8 overflow-hidden rounded-full bg-neutral-200">
-                            <Image
-                                src="/logo.jpg"
-                                alt="Logo"
-                                fill
-                                className="object-cover"
-                            />
+                    <Link href="/" className="flex items-center gap-3 group cursor-pointer">
+                        <div className="relative flex items-center justify-center w-10 h-10 bg-white/5 border border-white/10 rounded-xl overflow-hidden group-hover:border-violet-500/50 transition-all duration-500">
+                            <span className="font-bold text-xl tracking-tighter text-white">YM</span>
+                            {/* Subtle background glow on hover */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                     </Link>
                 </Magnetic>
