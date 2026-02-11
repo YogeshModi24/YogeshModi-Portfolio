@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import Magnetic from "@/components/ui/magnetic"
-import { Download } from "lucide-react"
+import { ResumeButton } from "@/components/ui/resume-button"
 
 const navItems = [
     { name: "Home", href: "/#home" },
@@ -80,13 +80,10 @@ export function Header() {
                 </div>
 
                 <Magnetic>
-                    <Link
+                    <ResumeButton
                         href="#resume"
-                        className="ml-2 hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white font-medium text-sm hover:scale-105 hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] transition-all duration-300 font-sans border-0"
-                    >
-                        <span>RESUME</span>
-                        <Download className="w-4 h-4" />
-                    </Link>
+                        className="ml-2 hidden md:inline-flex"
+                    />
                 </Magnetic>
             </div>
         </header>

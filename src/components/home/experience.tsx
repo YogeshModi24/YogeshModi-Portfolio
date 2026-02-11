@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Download } from 'lucide-react'
+
+
+import { ResumeButton } from '@/components/ui/resume-button'
 
 const experiences = [
     {
@@ -96,13 +97,9 @@ export function Experience() {
                         <h3 className="text-2xl font-bold text-white mb-2">Want the full story?</h3>
                         <p className="text-neutral-400">Download my complete resume with detailed project breakdowns.</p>
                     </div>
-                    <Link
-                        href="#"
-                        className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold hover:scale-105 transition-transform flex items-center gap-2 shadow-lg hover:shadow-violet-500/20"
-                    >
-                        <Download className="w-5 h-5" />
+                    <ResumeButton href="/resume.pdf">
                         Download Resume
-                    </Link>
+                    </ResumeButton>
                 </div>
             </motion.div>
         </section>

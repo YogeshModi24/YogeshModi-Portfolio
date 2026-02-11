@@ -34,8 +34,8 @@ export function MetricsBar() {
                                 <span className="text-xs uppercase tracking-[0.2em] text-neutral-500 font-medium group-hover:text-neutral-400 transition-colors">
                                     {stat.label}
                                 </span>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-3xl font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent font-mono">
+                                <div className="flex items-baseline gap-2">
+                                    <span className="text-3xl font-bold text-white font-mono tracking-tight">
                                         {stat.value}
                                     </span>
                                     {stat.tooltip ? (
@@ -43,7 +43,7 @@ export function MetricsBar() {
                                             <Tooltip>
                                                 <TooltipTrigger asChild>
                                                     <div className="flex items-center gap-1 cursor-help">
-                                                        <span className="text-sm text-violet-400/80 font-medium border-b border-dotted border-violet-500/30">{stat.sub}</span>
+                                                        <span className="text-sm text-zinc-400 font-normal transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">{stat.sub}</span>
                                                     </div>
                                                 </TooltipTrigger>
                                                 <TooltipContent className="max-w-xs bg-neutral-900 border-white/10 text-neutral-300">
@@ -52,7 +52,7 @@ export function MetricsBar() {
                                             </Tooltip>
                                         </TooltipProvider>
                                     ) : (
-                                        <span className="text-sm text-violet-400/80 font-medium">{stat.sub}</span>
+                                        <span className="text-sm text-zinc-400 font-normal transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] cursor-default">{stat.sub}</span>
                                     )}
                                 </div>
                             </div>
