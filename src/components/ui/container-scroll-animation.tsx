@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import { useScroll, useTransform, motion, MotionValue, useMotionValue, useSpring } from "framer-motion";
 
 export const ContainerScroll = ({
     titleComponent,
@@ -76,19 +76,57 @@ export const Card = ({
     scale: MotionValue<number>;
     children: React.ReactNode;
 }) => {
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Apply spring physics for that premium smooth Apple-like hover tracking
+    const mouseRotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), { stiffness: 150, damping: 20 });
+    const mouseRotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), { stiffness: 150, damping: 20 });
+    
+    // Glare effect intensity based on vertical mouse position
+    const glareOpacity = useTransform(mouseY, [-0.5, 0.5], [0, 0.4]);
+
+    // Combine the scroll rotation with the mouse hover rotation
+    const combinedRotateX = useTransform([rotate, mouseRotateX], ([scrollR, mouseR]: any) => scrollR + mouseR);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Normalize coordinates from -0.5 to 0.5
+        mouseX.set(x / rect.width - 0.5);
+        mouseY.set(y / rect.height - 0.5);
+    };
+
+    const handleMouseLeave = () => {
+        // Reset rotation gracefully when mouse leaves
+        mouseX.set(0);
+        mouseY.set(0);
+    };
+
     return (
         <motion.div
             style={{
-                rotateX: rotate,
+                rotateX: combinedRotateX,
+                rotateY: mouseRotateY,
                 scale,
                 boxShadow:
                     "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
             }}
-            className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl relative transition-colors group cursor-crosshair"
         >
-            <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
+            <div className=" h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
                 {children}
             </div>
+            
+            {/* Dynamic Glass Glare Overlay */}
+            <motion.div 
+                className="pointer-events-none absolute inset-0 rounded-[26px] bg-gradient-to-tr from-white/20 to-transparent mix-blend-overlay transition-opacity duration-300"
+                style={{ opacity: glareOpacity }}
+            />
         </motion.div>
     );
 };
