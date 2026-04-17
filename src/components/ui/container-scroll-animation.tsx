@@ -87,7 +87,7 @@ export const Card = ({
     const glareOpacity = useTransform(mouseY, [-0.5, 0.5], [0, 0.4]);
 
     // Combine the scroll rotation with the mouse hover rotation
-    const combinedRotateX = useTransform([rotate, mouseRotateX], ([scrollR, mouseR]: any) => scrollR + mouseR);
+    const combinedRotateX = useTransform([rotate, mouseRotateX], ([scrollR, mouseR]: number[]) => scrollR + mouseR);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();

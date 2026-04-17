@@ -26,7 +26,7 @@ export function LoadingScreen() {
         if (skipped) return;
 
         const durationPerVideo = 1000; // 1 second per video
-        let timeoutIds: NodeJS.Timeout[] = [];
+        const timeoutIds: NodeJS.Timeout[] = [];
 
         // Preload videos for smoother transition
         if (typeof window !== "undefined") {
